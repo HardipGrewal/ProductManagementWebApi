@@ -6,13 +6,14 @@ namespace DAL
 {
     public class ProductsBase
     {
-        private SqlConnection _connection = new SqlConnection();
-
+        //private SqlConnection _connection = new SqlConnection();
+        
+        const string connstr = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=ProductManagement;Integrated Security=True;Connect Timeout=60;Encrypt=False;Trust Server Certificate=False";
         public ProductsBase()
         {
-            SqlConnection connection = new();
-            connection.ConnectionString = ConfigurationManager.ConnectionStrings["Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=ProductManagement;Integrated Security=True;Persist Security Info=False;Pooling=False;Multiple Active Result Sets=False;Connect Timeout=60;Encrypt=False;Trust Server Certificate=False;Command Timeout=0"].ConnectionString;
-            _connection = connection;
+            //SqlConnection connection = new();
+            //connection.ConnectionString = ConfigurationManager.ConnectionStrings["Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=ProductManagement;Integrated Security=True;Persist Security Info=False;Pooling=False;Multiple Active Result Sets=False;Connect Timeout=60;Encrypt=False;Trust Server Certificate=False;Command Timeout=0"].ConnectionString;
+            //_connection = connection;
         }
 
         /// <summary>
@@ -21,7 +22,7 @@ namespace DAL
         public DataTable AllProducts()
         {
             SqlConnection connection = new();
-            connection.ConnectionString = ConfigurationManager.ConnectionStrings["Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=ProductManagement;Integrated Security=True;Persist Security Info=False;Pooling=False;Multiple Active Result Sets=False;Connect Timeout=60;Encrypt=False;Trust Server Certificate=False;Command Timeout=0"].ConnectionString;
+            connection.ConnectionString = ConfigurationManager.ConnectionStrings[connstr].ConnectionString;
             DataTable dt = new DataTable();
 
             string queryString = """SELECT productId, name, priceId FROM dbo.Products;""";
@@ -52,7 +53,7 @@ namespace DAL
         public bool InsertProduct(int productId, string name, int priceId)
         {
             SqlConnection connection = new();
-            connection.ConnectionString = ConfigurationManager.ConnectionStrings["Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=ProductManagement;Integrated Security=True;Persist Security Info=False;Pooling=False;Multiple Active Result Sets=False;Connect Timeout=60;Encrypt=False;Trust Server Certificate=False;Command Timeout=0"].ConnectionString;
+            connection.ConnectionString = ConfigurationManager.ConnectionStrings[connstr].ConnectionString;
             
             string queryString = $"""INSERT INTO [dbo].[Products] ([productId], [name], [priceId]) VALUES ({productId}, N'{name}', {priceId});""";
             try
@@ -80,7 +81,7 @@ namespace DAL
         public bool DeleteProduct(int productId)
         {
             SqlConnection connection = new();
-            connection.ConnectionString = ConfigurationManager.ConnectionStrings["Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=ProductManagement;Integrated Security=True;Persist Security Info=False;Pooling=False;Multiple Active Result Sets=False;Connect Timeout=60;Encrypt=False;Trust Server Certificate=False;Command Timeout=0"].ConnectionString;
+            connection.ConnectionString = ConfigurationManager.ConnectionStrings[connstr].ConnectionString;
 
             string queryString = $"""Delete From [dbo].[Products] Where [productId] = {productId};""";
             try
@@ -109,7 +110,7 @@ namespace DAL
         public bool UpdateProductName(int productId, string name)
         {
             SqlConnection connection = new();
-            connection.ConnectionString = ConfigurationManager.ConnectionStrings["Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=ProductManagement;Integrated Security=True;Persist Security Info=False;Pooling=False;Multiple Active Result Sets=False;Connect Timeout=60;Encrypt=False;Trust Server Certificate=False;Command Timeout=0"].ConnectionString;
+            connection.ConnectionString = ConfigurationManager.ConnectionStrings[connstr].ConnectionString;
 
             string queryString = $"""
                 UPDATE [dbo].[Products] 
@@ -139,7 +140,7 @@ namespace DAL
         public void AllPrice()
         {
             SqlConnection connection = new();
-            connection.ConnectionString = ConfigurationManager.ConnectionStrings["Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=ProductManagement;Integrated Security=True;Persist Security Info=False;Pooling=False;Multiple Active Result Sets=False;Connect Timeout=60;Encrypt=False;Trust Server Certificate=False;Command Timeout=0"].ConnectionString;
+            connection.ConnectionString = ConfigurationManager.ConnectionStrings[connstr].ConnectionString;
 
 
             string queryString = """SELECT priceId, buyUnitPrice, sellUnitPrice FROM dbo.Prices;""";
