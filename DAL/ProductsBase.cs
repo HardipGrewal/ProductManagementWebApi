@@ -6,11 +6,12 @@ namespace DAL
 {
     public class ProductsBase
     {
-        private SqlConnection _connection = new SqlConnection();
-
+        //private SqlConnection _connection = new SqlConnection();
+        
+        const string connstr = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=ProductManagement;Integrated Security=True;Connect Timeout=60;Encrypt=False;Trust Server Certificate=False";
         public ProductsBase()
         {
-            
+
         }
 
         private string connstr = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=ProductManagement;Integrated Security=True;Persist Security Info=False;Pooling=False;Multiple Active Result Sets=False;Connect Timeout=60;Encrypt=False;Trust Server Certificate=False;Command Timeout=0";
