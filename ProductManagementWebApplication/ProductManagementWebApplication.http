@@ -1,0 +1,11 @@
+@ProductManagementWebApplication_HostAddress = http://localhost:5065
+
+GET {{ProductManagementWebApplication_HostAddress}}/ProductManagement
+Accept: application/json
+
+###
+
+GET {{ProductManagementWebApplication_HostAddress}}/ProductManagement/1
+Accept: application/json
+
+###
