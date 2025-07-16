@@ -11,11 +11,10 @@ namespace DAL
         const string connstr = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=ProductManagement;Integrated Security=True;Connect Timeout=60;Encrypt=False;Trust Server Certificate=False";
         public ProductsBase()
         {
-            //SqlConnection connection = new();
-            //connection.ConnectionString = ConfigurationManager.ConnectionStrings["Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=ProductManagement;Integrated Security=True;Persist Security Info=False;Pooling=False;Multiple Active Result Sets=False;Connect Timeout=60;Encrypt=False;Trust Server Certificate=False;Command Timeout=0"].ConnectionString;
-            //_connection = connection;
+
         }
 
+        private string connstr = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=ProductManagement;Integrated Security=True;Persist Security Info=False;Pooling=False;Multiple Active Result Sets=False;Connect Timeout=60;Encrypt=False;Trust Server Certificate=False;Command Timeout=0";
         /// <summary>
         /// Get All products
         /// </summary>
